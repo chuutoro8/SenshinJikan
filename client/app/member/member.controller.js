@@ -2,9 +2,20 @@
 (function(){
 
 class MemberComponent {
-  constructor() {
-    this.message = 'Hello';
-    this.members = [{name: '田中'},{name: '鈴木'}];
+  constructor($scope, $http) {
+    $scope.members = [];
+    $http.get('/api/members').success(function(members) {
+        $scope.members = members;
+    });
+
+    $scope.createMember = function() {
+        if ($scope.member && $scope.member.name) {
+            $scope.members.push({
+                name: $scope.member.name
+            });
+            $scope.member.name = '';
+        }
+    };
   }
 }
 

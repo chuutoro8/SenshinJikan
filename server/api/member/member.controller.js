@@ -12,6 +12,16 @@
 import _ from 'lodash';
 import Member from './member.model';
 
+Member.find({}).remove(function() {
+    Member.create({
+        name: '田中mk2'
+    }, {
+        name:'鈴木２世'
+    }, function(err) {
+        console.log('finished populating Members');
+    });
+});
+
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {

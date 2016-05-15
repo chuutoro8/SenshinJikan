@@ -3,9 +3,7 @@
 import mongoose from 'mongoose';
 
 var MemberSchema = new mongoose.Schema({
-  name: String,
-  info: String,
-  active: Boolean
+  name: String
 });
 
 export default mongoose.model('Member', MemberSchema);
